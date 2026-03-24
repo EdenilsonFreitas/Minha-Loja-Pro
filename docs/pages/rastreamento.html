@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rastreamento - Minha Loja Pro</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">Minha Loja Pro</div>
+            <nav class="navbar">
+                <a href="../" class="nav-link">Home</a>
+                <a href="produtos.html" class="nav-link">Produtos</a>
+                <a href="carrinho.html" class="nav-link">🛒 Carrinho</a>
+                <a href="rastreamento.html" class="nav-link active">📦 Rastreamento</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="tracking-section">
+        <div class="container">
+            <h1 class="tracking-title">📦 Rastreamento de Pedidos</h1>
+            <p class="tracking-subtitle">Acompanhe o status da entrega do seu pedido em tempo real</p>
+
+            <div class="tracking-container">
+                <!-- Formulário de Rastreamento -->
+                <div class="tracking-form-card">
+                    <h2>Consultar Pedido</h2>
+                    <form id="tracking-form" class="tracking-form">
+                        <div class="form-group">
+                            <label for="tracking-code">Código de Rastreamento</label>
+                            <input
+                                type="text"
+                                id="tracking-code"
+                                placeholder="Digite seu código de rastreamento"
+                                maxlength="12"
+                                required
+                            >
+                        </div>
+                        <button type="submit" class="btn-track">Rastrear Pedido</button>
+                    </form>
+
+                    <div class="tracking-examples">
+                        <p><strong>Exemplos de códigos:</strong></p>
+                        <div class="example-codes">
+                            <span class="code-example">TRK-ABC123</span>
+                            <span class="code-example">TRK-XYZ789</span>
+                            <span class="code-example">TRK-DEF456</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resultado do Rastreamento -->
+                <div id="tracking-result" class="tracking-result" style="display: none;">
+                    <div class="result-header">
+                        <h3>Status do Pedido</h3>
+                        <span id="tracking-code-display" class="tracking-code-display"></span>
+                    </div>
+
+                    <div class="order-info">
+                        <div class="info-item">
+                            <span class="info-label">Pedido:</span>
+                            <span id="order-number">#12345</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Data do Pedido:</span>
+                            <span id="order-date">24/03/2026</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Valor:</span>
+                            <span id="order-value">R$ 0,00</span>
+                        </div>
+                    </div>
+
+                    <!-- Timeline de Status -->
+                    <div class="tracking-timeline">
+                        <div class="timeline-item completed">
+                            <div class="timeline-icon">✅</div>
+                            <div class="timeline-content">
+                                <h4>Pedido Confirmado</h4>
+                                <p>Seu pedido foi confirmado e está sendo preparado</p>
+                                <span class="timeline-date">24/03/2026 14:30</span>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item completed">
+                            <div class="timeline-icon">📦</div>
+                            <div class="timeline-content">
+                                <h4>Em Preparação</h4>
+                                <p>Estamos separando e embalando seus produtos</p>
+                                <span class="timeline-date">24/03/2026 16:45</span>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item active">
+                            <div class="timeline-icon">🚚</div>
+                            <div class="timeline-content">
+                                <h4>Enviado</h4>
+                                <p>Seu pedido foi enviado e está a caminho</p>
+                                <span class="timeline-date">25/03/2026 09:15</span>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item pending">
+                            <div class="timeline-icon">📍</div>
+                            <div class="timeline-content">
+                                <h4>Em Trânsito</h4>
+                                <p>O pedido está sendo transportado até você</p>
+                                <span class="timeline-date">Previsto: 26/03/2026</span>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item pending">
+                            <div class="timeline-icon">🏠</div>
+                            <div class="timeline-content">
+                                <h4>Entregue</h4>
+                                <p>Pedido entregue com sucesso</p>
+                                <span class="timeline-date">Previsto: 27/03/2026</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Informações de Entrega -->
+                    <div class="delivery-info">
+                        <h4>Informações de Entrega</h4>
+                        <div class="delivery-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Transportadora:</span>
+                                <span>Correios</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Código Correios:</span>
+                                <span id="correios-code">BR123456789BR</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Prazo Estimado:</span>
+                                <span>2-3 dias úteis</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Produtos do Pedido -->
+                    <div class="order-products">
+                        <h4>Produtos do Pedido</h4>
+                        <div id="order-products-list" class="products-list">
+                            <!-- Produtos serão carregados aqui -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mensagem de Erro -->
+                <div id="tracking-error" class="tracking-error" style="display: none;">
+                    <div class="error-content">
+                        <p class="error-icon">❌</p>
+                        <h3>Código não encontrado</h3>
+                        <p>Verifique se o código de rastreamento está correto e tente novamente.</p>
+                        <p><strong>Dicas:</strong></p>
+                        <ul>
+                            <li>Certifique-se de que digitou o código corretamente</li>
+                            <li>O código deve ter o formato TRK-XXXXXX</li>
+                            <li>Códigos são gerados apenas após a finalização da compra</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção de Ajuda -->
+            <div class="help-section">
+                <h3>📞 Precisa de Ajuda?</h3>
+                <div class="help-content">
+                    <div class="help-item">
+                        <h4>Como rastrear meu pedido?</h4>
+                        <p>Use o código de rastreamento enviado por email após a compra, ou gere um novo código no seu histórico de pedidos.</p>
+                    </div>
+                    <div class="help-item">
+                        <h4>Onde encontro meu código?</h4>
+                        <p>O código é enviado automaticamente por email após a confirmação do pedido. Você também pode encontrá-lo na página do carrinho.</p>
+                    </div>
+                    <div class="help-item">
+                        <h4>Problemas com entrega?</h4>
+                        <p>Entre em contato conosco pelo email suporte@minhalojapro.com ou pelo telefone (11) 9999-9999.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Minha Loja Pro. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../js/tracking.js"></script>
+</body>
+</html>
