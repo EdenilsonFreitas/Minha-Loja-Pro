@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras - Minha Loja Pro</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">Minha Loja Pro</div>
+            <nav class="navbar">
+                <a href="../" class="nav-link">Home</a>
+                <a href="produtos.html" class="nav-link">Produtos</a>
+                <a href="carrinho.html" class="nav-link active">🛒 Carrinho</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="cart-section">
+        <div class="container">
+            <h1 class="cart-title">🛒 Seu Carrinho de Compras</h1>
+
+            <div class="cart-container">
+                <!-- Lista de Produtos no Carrinho -->
+                <div class="cart-items">
+                    <div id="cart-list" class="cart-list">
+                        <!-- Items serão carregados aqui via JavaScript -->
+                    </div>
+
+                    <!-- Carrinho Vazio -->
+                    <div id="empty-cart" class="empty-cart" style="display: none; text-align: center; padding: 3rem;">
+                        <p style="font-size: 3rem; margin-bottom: 1rem;">📭</p>
+                        <p style="font-size: 1.3rem; color: #636e72; margin-bottom: 2rem;">Seu carrinho está vazio!</p>
+                        <a href="produtos.html" class="btn">Continuar Comprando</a>
+                    </div>
+                </div>
+
+                <!-- Resumo do Carrinho -->
+                <aside class="cart-summary">
+                    <div class="summary-card">
+                        <h2>Resumo do Pedido</h2>
+
+                        <div class="summary-item">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">R$ 0,00</span>
+                        </div>
+
+                        <div class="summary-item">
+                            <span>Frete:</span>
+                            <span id="shipping">R$ 0,00</span>
+                        </div>
+
+                        <div class="summary-item">
+                            <span>Desconto (10%):</span>
+                            <span id="discount" style="color: #27ae60;">R$ 0,00</span>
+                        </div>
+
+                        <div class="summary-divider"></div>
+
+                        <div class="summary-total">
+                            <span>Total:</span>
+                            <span id="total">R$ 0,00</span>
+                        </div>
+
+                        <button id="checkout-btn" class="btn-checkout" disabled>
+                            Finalizar Compra
+                        </button>
+
+                        <a href="produtos.html" class="btn-continue">
+                            Continuar Comprando
+                        </a>
+
+                        <div class="payment-methods">
+                            <p style="font-size: 0.9rem; color: #636e72; text-align: center;">
+                                💳 Aceitamos cartão | PIX | Boleto
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Deixa claro qualidade de frete -->
+                    <div class="summary-card shipping-info">
+                        <h3>📦 Entrega Rápida</h3>
+                        <p>✓ Para São Paulo: 2-3 dias</p>
+                        <p>✓ Para outras regiões: 4-7 dias</p>
+                        <p>✓ Entrega garantida ou reembolso</p>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- Cupom de Desconto -->
+            <div class="coupon-section">
+                <div class="coupon-card">
+                    <h3>🎁 Tem um cupom?</h3>
+                    <div class="coupon-input-group">
+                        <input 
+                            type="text" 
+                            id="coupon-input" 
+                            placeholder="Digite seu cupom de desconto"
+                            maxlength="20"
+                        >
+                        <button id="apply-coupon-btn" class="btn-coupon">Aplicar</button>
+                    </div>
+                    <div id="coupon-message" style="display: none; margin-top: 0.5rem; font-size: 0.9rem;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Minha Loja Pro. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../js/cart.js"></script>
+</body>
+</html>
