@@ -6,11 +6,12 @@ Uma loja profissional moderna, rápida e intuitiva com design responsivo e exper
 
 - ⚡ **Rápido** - Navegação instantânea e layouts otimizados
 - 🔒 **Seguro** - Pronto para integração com sistemas seguros
-- 📦 **Entrega Garantida** - Interface para rastreamento
+- 📦 **Entrega Garantida** - Rastreamento em tempo real do seu pedido
 - 📱 **Responsivo** - Funciona perfeitamente em todos os dispositivos
 - 🎨 **Design Moderno** - Interface limpa e profissional
-- 🛒 **Carrinho de Compras** - Sistema completo de carrinho com persistência
+- 🛒 **Carrinho Completo** - Sistema completo de carrinho com persistência
 - 🎁 **Cupons de Desconto** - Suporte a cupons promocionais
+- 📊 **Rastreamento Avançado** - Timeline visual e códigos únicos
 
 ## 📁 Estrutura do Projeto
 
@@ -19,12 +20,14 @@ Minha-Loja-Pro/
 ├── index.html              # Página inicial
 ├── pages/
 │   ├── produtos.html      # Página de produtos
-│   └── carrinho.html      # Página do carrinho de compras
+│   ├── carrinho.html      # Página do carrinho de compras
+│   └── rastreamento.html  # Página de rastreamento de pedidos
 ├── css/
 │   └── style.css          # Estilos principais
 ├── js/
 │   ├── main.js            # Scripts principais
-│   └── cart.js            # Sistema de gerenciamento do carrinho
+│   ├── cart.js            # Sistema de gerenciamento do carrinho
+│   └── tracking.js        # Sistema de rastreamento de pedidos
 ├── README.md              # Este arquivo
 ├── DEVELOPMENT.md         # Guia de desenvolvimento
 └── .gitignore             # Arquivos ignorados pelo Git
@@ -91,6 +94,47 @@ O carrinho utiliza `localStorage` do navegador para persistir os dados. Isso sig
 - Os dados são mantidos mesmo após fechar o navegador
 - Cada navegador/dispositivo tem seu próprio carrinho
 
+## 📦 Sistema de Rastreamento
+
+### Funcionalidades
+
+- ✅ **Códigos únicos de rastreamento** - Gerados automaticamente por pedido
+- ✅ **Timeline visual** - Acompanhe todas as etapas da entrega
+- ✅ **Status em tempo real** - De "Pedido Confirmado" até "Entregue"
+- ✅ **Informações detalhadas** - Código dos Correios, transportadora, prazo
+- ✅ **Histórico de produtos** - Veja todos os itens do pedido
+- ✅ **Interface responsiva** - Funciona perfeitamente em mobile
+- ✅ **Pedidos de exemplo** - Para demonstração do sistema
+
+### Status dos Pedidos
+
+1. **📋 Pedido Confirmado** - Pedido recebido e validado
+2. **📦 Em Preparação** - Produtos sendo separados e embalados
+3. **🚚 Enviado** - Pedido despachado para entrega
+4. **📍 Em Trânsito** - Pedido em transporte até o destino
+5. **🏠 Entregue** - Pedido entregue com sucesso
+
+### Códigos de Rastreamento
+
+- **Formato**: TRK-XXXXXX (6 caracteres alfanuméricos)
+- **Exemplos**: TRK-ABC123, TRK-XYZ789, TRK-DEF456
+- **Geração**: Automática ao finalizar compra
+- **Persistência**: Salvos no localStorage
+
+### Como Rastrear um Pedido
+
+1. Acesse a página de rastreamento
+2. Digite o código de rastreamento (formato: TRK-XXXXXX)
+3. Clique em "Rastrear Pedido"
+4. Visualize o status atual e timeline completa
+
+### Pedidos de Demonstração
+
+Para testar o sistema, use estes códigos:
+- **TRK-ABC123** - Pedido enviado
+- **TRK-XYZ789** - Pedido entregue
+- **TRK-DEF456** - Pedido em trânsito
+
 ## 🎨 Personalização
 
 ### Personalizando as Cores
@@ -132,6 +176,7 @@ A loja contém as seguintes seções:
 - [index.html](index.html) - Página inicial
 - [pages/produtos.html](pages/produtos.html) - Catálogo de produtos
 - [pages/carrinho.html](pages/carrinho.html) - Carrinho de compras
+- [pages/rastreamento.html](pages/rastreamento.html) - Rastreamento de pedidos
 
 ## 📱 Responsividade
 

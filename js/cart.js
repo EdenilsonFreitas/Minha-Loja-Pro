@@ -285,24 +285,34 @@ class ShoppingCart {
         const total = this.getTotal();
         const itemCount = this.items.length;
         
+        // Criar pedido com código de rastreamento
+        const order = window.tracking ? window.tracking.createOrder(this.items, total) : null;
+        
         this.showNotification(
             `✓ Pedido confirmado! ${itemCount} produto(s) | Total: R$ ${this.formatPrice(total)}`,
             'success'
         );
 
-        // Simular processamento
+        // Simular processamento e mostrar código de rastreamento
         setTimeout(() => {
+            const trackingCode = order ? order.trackingCode : 'TRK-DEMO123';
+            
             alert(
-                `Seu pedido foi confirmado!\n\n` +
-                `Total: R$ ${this.formatPrice(total)}\n` +
-                `Itens: ${itemCount}\n\n` +
-                `Próximo passo: Escolha o método de pagamento.`
+                `🎉 Seu pedido foi confirmado!\n\n` +
+                `📦 Código de Rastreamento: ${trackingCode}\n` +
+                `💰 Total: R$ ${this.formatPrice(total)}\n` +
+                `📊 Itens: ${itemCount}\n\n` +
+                `📧 Um email foi enviado com os detalhes.\n` +
+                `🔍 Acompanhe seu pedido na página de rastreamento.`
             );
             
             // Limpar carrinho
             this.items = [];
             this.saveCart();
             this.renderCart();
+            
+            // Redirecionar para página de rastreamento (opcional)
+            // window.location.href = 'rastreamento.html';
         }, 1500);
     }
 
